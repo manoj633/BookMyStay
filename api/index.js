@@ -17,7 +17,7 @@ const connect = async () => {
 };
 
 //Middlewares
-app.use("/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 mongoose.connection.on("disconnected", () => {
   console.log("MongoDb disconnected!");
