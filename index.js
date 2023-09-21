@@ -14,6 +14,14 @@ const connect = async () => {
   }
 };
 
+mongoose.connection.on("disconnected", () => {
+  console.log("MongoDb disconnected!");
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("MongoDb connected!");
+});
+
 app.listen(8800, () => {
   connect();
   console.log("connected to backend");
