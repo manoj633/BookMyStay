@@ -26,6 +26,18 @@ app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
+//Error handling middleware
+app.use((err, req, res, next) => {
+  const errorState = err.status || 500;
+  const errorMessage = err.message || "Something went wrong";
+  return res.status(errorState).json({
+    success: false,
+    status: errorState,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
+
 mongoose.connection.on("disconnected", () => {
   console.log("MongoDb disconnected!");
 });
