@@ -7,10 +7,15 @@ import {
   getHotels,
   updateHotel,
 } from "../controllers/hotelController.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-router.route("/").post(addHotel).get(getHotels);
-router.route("/:id").put(updateHotel).delete(deleteHotelById).get(getHotelById);
+router.route("/").post(verifyAdmin, addHotel).get(getHotels);
+router
+  .route("/:id")
+  .put(verifyAdmin, updateHotel)
+  .delete(verifyAdmin, deleteHotelById)
+  .get(getHotelById);
 
 export default router;
