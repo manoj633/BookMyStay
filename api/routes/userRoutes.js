@@ -5,14 +5,14 @@ import {
   getUsers,
   updateUser,
 } from "../controllers/userController.js";
-import { verifyToken } from "../utils/verifyToken.js";
+import { verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 router.route("/").get(getUsers);
 router
   .route("/:id")
-  .put(verifyToken, updateUser)
+  .put(verifyUser, updateUser)
   .delete(deleteUserById)
   .get(getUserById);
 
