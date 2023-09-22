@@ -2,8 +2,10 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/", () => {
-  console.log("user is logged in");
-});
+// CREATE
+// UPDATE
+// DELETE
+// GET
+// GET ALL
 
 export default router;
