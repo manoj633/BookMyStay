@@ -3,6 +3,7 @@ import Hotel from "../models/hotelModel.js";
 import {
   addHotel,
   countByCity,
+  countByType,
   deleteHotelById,
   getHotelById,
   getHotels,
@@ -20,5 +21,6 @@ router
 
 router.route("/find/:id").get(getHotelById);
 router.route("/countByCity").get(countByCity);
+router.route("/countByType").get(countByType);
 
 export default router;
