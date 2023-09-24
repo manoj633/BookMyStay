@@ -83,7 +83,7 @@ const Header = ({ type }) => {
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
+              more with a free BookMyStay account
             </p>
             <button className="headerBtn">Sign in / Register</button>
             <div className="headerSearch">
