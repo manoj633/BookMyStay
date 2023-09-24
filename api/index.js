@@ -21,6 +21,10 @@ const connect = async () => {
 };
 
 //Middlewares
+app.use((req, res, next) => {
+  console.log(req.url);
+  next();
+});
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
