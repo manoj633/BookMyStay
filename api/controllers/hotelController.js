@@ -61,8 +61,13 @@ export const getHotelById = async (req, res, next) => {
 //@route    GET /api/hotels/
 //@access   Public
 export const getHotels = async (req, res, next) => {
+  const { min, max, limit, ...others } = req.query;
   try {
-    const hotels = await Hotel.find();
+    console.log(others);
+    const hotels = await Hotel.find({
+      ...others,
+      cheapestPrice: { $gt: min || 1, $lt: max || 50000 },
+    }).limit(req.query.limit);
     res.status(200).json(hotels);
   } catch (error) {
     next(error);
