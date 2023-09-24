@@ -5,6 +5,7 @@ import "./home.css";
 import Featured from "../../components/featured/Featured";
 import PropertyList from "../../components/propertyList/PropertyList";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
+import MailList from "../../components/mailList/MailList";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
         <PropertyList />
         <h1 className="homeTitle">Homes guests love</h1>
         <FeaturedProperties />
+        <MailList />
       </div>
     </div>
   );
