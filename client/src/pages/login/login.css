@@ -37,7 +37,7 @@
     padding-bottom: 20px;
 }
 
-input {
+.lInput {
     border-radius: 4px;
     outline: none !important;
     border: 1px solid rgb(26, 26, 26);
@@ -46,7 +46,7 @@ input {
     height: 36px;
 }
 
-input:focus {
+.lInput:focus {
     outline: none !important;
     border: 2px solid #006ce4;
 }

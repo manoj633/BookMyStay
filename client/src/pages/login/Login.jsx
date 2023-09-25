@@ -3,6 +3,7 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import Navbar from "../../components/navbar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -10,7 +11,9 @@ function Login() {
     password: undefined,
   });
 
-  const { user, loading, error, dispatch } = useContext(AuthContext);
+  const { loading, error, dispatch } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -22,16 +25,16 @@ function Login() {
     try {
       const res = await axios.post("/api/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res?.data });
+      navigate("/");
     } catch (error) {
       console.log(error);
       dispatch({ type: "LOGIN_FAILURE", payload: error.response.data.message });
     }
   };
 
-  console.log(user);
   return (
     <>
-      <Navbar loginPage={true} />
+      <Navbar />
       <div className="login">
         <div className="lConrainer">
           <div>
@@ -56,14 +59,18 @@ function Login() {
               </label>
               <input
                 type="password"
-                className="lPassword"
+                className="lInput"
                 placeholder="password"
                 id="password"
                 onChange={handleChange}
               />
             </div>
 
-            <button onClick={handleLogin} className="lButton">
+            <button
+              disabled={loading}
+              onClick={handleLogin}
+              className="lButton"
+            >
               Login
             </button>
           </div>
