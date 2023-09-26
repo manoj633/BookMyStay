@@ -6,6 +6,10 @@ import Home from "./pages/home/Home";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { DarkModeContext } from "./context/darkModeContext";
+import List from "./pages/list/List";
+import Single from "./pages/single/Single";
+import New from "./pages/new/New";
+import { productInputs, userInputs } from "./formSource.jsx";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -33,6 +37,14 @@ function App() {
                 </ProtectedRoutes>
               }
             />
+            <Route path="users">
+              <Route index element={<List />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
