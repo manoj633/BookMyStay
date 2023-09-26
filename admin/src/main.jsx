@@ -9,10 +9,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
       <DarkModeContextProvider>
-        <DarkModeContextProvider></DarkModeContextProvider>
+        <App />
       </DarkModeContextProvider>
     </AuthContextProvider>
-
-    <App />
   </React.StrictMode>
 );
