@@ -23,7 +23,7 @@ export const addRoom = async (req, res, next) => {
 //@desc     Update Room Details by ID
 //@route    PUT /api/rooms/:id
 //@access   Private
-export const updateRoom = async (req, res) => {
+export const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await Room.findByIdAndUpdate(
       req.params.id,
@@ -38,10 +38,32 @@ export const updateRoom = async (req, res) => {
   }
 };
 
+//@desc     Update Room Availability by ID
+//@route    PUT /api/rooms/availability/:id
+//@access   Private
+export const updateRoomAvailability = async (req, res, next) => {
+  try {
+    await Room.updateOne(
+      {
+        "roomNumbers._id": req.params.id,
+      },
+      {
+        $push: {
+          "roomNumbers.$.unavilableDates": req.body.dates,
+        },
+      }
+    );
+
+    res.status(200).json("Room status has been updated");
+  } catch (error) {
+    next(error);
+  }
+};
+
 //@desc     Delete a Room by ID
 //@route    DELETE /api/rooms/:id
 //@access   Private
-export const deleteRoomById = async (req, res) => {
+export const deleteRoomById = async (req, res, next) => {
   const hotelId = req.params.hotelid;
 
   try {
@@ -54,7 +76,6 @@ export const deleteRoomById = async (req, res) => {
       next(error);
     }
     res.status(200).send("Room deleted");
-    console.log("Room deleted");
   } catch (error) {
     next(error);
   }
