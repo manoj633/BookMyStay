@@ -10,8 +10,9 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { userInputs } from "./formSource.jsx";
-import { hotelColumns, userColumns } from "./datatablesource";
+import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
+import NewRoom from "./pages/newRoom/NewRoom";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -51,6 +52,11 @@ function App() {
               <Route index element={<List columns={hotelColumns} />} />
               <Route path=":productId" element={<Single />} />
               <Route path="new" element={<NewHotel />} />
+            </Route>
+            <Route path="rooms">
+              <Route index element={<List columns={roomColumns} />} />
+              <Route path=":roomId" element={<Single />} />
+              <Route path="new" element={<NewRoom />} />
             </Route>
           </Route>
         </Routes>
