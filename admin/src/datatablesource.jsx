@@ -1,5 +1,5 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID", width: 250 },
   {
     field: "user",
     headerName: "User",
@@ -31,31 +31,31 @@ export const userColumns = [
   {
     field: "city",
     headerName: "city",
-    width: 100,
+    width: 150,
   },
   {
     field: "phone",
     headerName: "Phone",
-    width: 100,
+    width: 200,
   },
 ];
 
 export const hotelColumns = [
-  { field: "_id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID", width: 250 },
   {
     field: "name",
     headerName: "Name",
-    width: 100,
+    width: 350,
   },
   {
     field: "type",
     headerName: "Type",
-    width: 100,
+    width: 150,
   },
   {
     field: "title",
     headerName: "Title",
-    width: 100,
+    width: 250,
   },
   {
     field: "city",

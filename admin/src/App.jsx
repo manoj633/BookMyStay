@@ -10,7 +10,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource.jsx";
-import { userColumns } from "./datatablesource";
+import { hotelColumns, userColumns } from "./datatablesource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -44,6 +44,14 @@ function App() {
               <Route
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
+              />
+            </Route>
+            <Route path="hotels">
+              <Route index element={<List columns={hotelColumns} />} />
+              <Route path=":productId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
               />
             </Route>
           </Route>
