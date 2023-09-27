@@ -9,8 +9,9 @@ import { DarkModeContext } from "./context/darkModeContext";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { productInputs, userInputs } from "./formSource.jsx";
+import { userInputs } from "./formSource.jsx";
 import { hotelColumns, userColumns } from "./datatablesource";
+import NewHotel from "./pages/newHotel/NewHotel";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -49,10 +50,7 @@ function App() {
             <Route path="hotels">
               <Route index element={<List columns={hotelColumns} />} />
               <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+              <Route path="new" element={<NewHotel />} />
             </Route>
           </Route>
         </Routes>

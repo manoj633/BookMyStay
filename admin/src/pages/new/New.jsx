@@ -10,7 +10,6 @@ const New = ({ inputs, title }) => {
   const [info, setInfo] = useState({});
 
   const handleChange = (e) => {
-    console.log(e.target.id);
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
