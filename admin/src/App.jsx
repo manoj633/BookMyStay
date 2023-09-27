@@ -10,10 +10,11 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource.jsx";
+import { userColumns } from "./datatablesource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-
+  console.log(userColumns);
   const ProtectedRoutes = ({ children }) => {
     const user = useContext(AuthContext);
 
@@ -38,7 +39,7 @@ function App() {
               }
             />
             <Route path="users">
-              <Route index element={<List />} />
+              <Route index element={<List columns={userColumns} />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
